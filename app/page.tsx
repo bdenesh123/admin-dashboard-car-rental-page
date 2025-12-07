@@ -46,19 +46,21 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right panel with illustration */}
         <div className="md:w-1/2 relative flex items-center justify-center p-6">
           <Image
-            src="/car.png" // Replace with your own image
+            src="/car.png"
             alt="Car Rental Illustration"
-            width={500}
-            height={400}
-            className="rounded-3xl shadow-lg"
+            width={800}
+            height={600}
+            className="object-contain"
           />
         </div>
       </div>
 
       {/* Footer */}
+      <footer className="w-full bg-green-100 text-green-800 px-6 py-4 text-center text-sm">
+        &copy; 2025 SewaCar. All rights reserved.
+      </footer>
     </div>
   );
 }
