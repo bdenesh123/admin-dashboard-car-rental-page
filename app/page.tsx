@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Home() {
   const router = useRouter();
@@ -14,45 +15,50 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col justify-between min-h-screen bg-gray-50 dark:bg-zinc-900 px-4">
-      {/* Main card */}
-      <div className="flex-1 flex items-center justify-center">
-        <div className="w-full max-w-lg bg-white dark:bg-zinc-800 rounded-3xl shadow-2xl p-12 sm:p-16 text-center space-y-6 flex flex-col justify-center">
-          {/* Branding */}
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-green-700">
+    <div className="flex flex-col min-h-screen bg-green-50">
+      {/* Split-screen hero */}
+      <div className="flex flex-1 flex-col md:flex-row">
+        {/* Left panel */}
+        <div className="md:w-1/2 flex flex-col justify-center items-start p-12 bg-green-100">
+          <h1 className="text-5xl font-extrabold text-green-700 mb-6">
             SewaCar
           </h1>
-
-          {/* Welcome text */}
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-4">
             Welcome to the Car Rental System
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg">
-            Select your portal to continue
+          <p className="text-slate-700 text-lg mb-8">
+            Select your portal to continue quickly and easily.
           </p>
 
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-4">
+          <div className="flex flex-col sm:flex-row gap-4 w-full">
             <button
               onClick={handleUserRedirect}
-              className="w-full sm:w-auto px-8 py-3 rounded-xl bg-gray-800 text-white font-semibold hover:bg-green-600 transition shadow-md whitespace-nowrap text-lg sm:text-xl"
+              className="flex-1 px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition shadow-md text-lg"
             >
               Continue as User
             </button>
             <button
               onClick={handleAdminRedirect}
-              className="w-full sm:w-auto px-8 py-3 rounded-xl bg-gray-800 text-white font-semibold hover:bg-green-600 transition shadow-md whitespace-nowrap text-lg sm:text-xl"
+              className="flex-1 px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition shadow-md text-lg"
             >
               Continue as Admin
             </button>
           </div>
         </div>
+
+        {/* Right panel with illustration */}
+        <div className="md:w-1/2 relative flex items-center justify-center p-6">
+          <Image
+            src="/car.png" // Replace with your own image
+            alt="Car Rental Illustration"
+            width={500}
+            height={400}
+            className="rounded-3xl shadow-lg"
+          />
+        </div>
       </div>
 
       {/* Footer */}
-      <footer className="w-full bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-400 px-6 py-4 text-center text-sm">
-        &copy; 2025 SewaCar. All rights reserved.
-      </footer>
     </div>
   );
 }

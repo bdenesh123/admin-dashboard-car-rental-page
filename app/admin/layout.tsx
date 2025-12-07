@@ -36,14 +36,15 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   ];
 
   return (
-    <div className="flex h-screen bg-gray-100 dark:bg-zinc-900 text-gray-900 dark:text-white">
+    <div className="flex h-screen bg-green-50 text-slate-900">
       {/* Sidebar */}
-      <aside className="w-72 bg-white dark:bg-zinc-900 border-r dark:border-gray-800 flex flex-col">
-        <div className="p-6 text-center border-b dark:border-gray-800">
+      <div className="w-72 bg-white border-r border-green-100 flex flex-col shadow-sm">
+        <div className="p-6 text-center border-b border-green-100">
           <h1 className="text-3xl font-extrabold tracking-tight text-green-700">
             SewaCar Admin
           </h1>
         </div>
+
         <nav className="flex-1 flex flex-col p-4 gap-3">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
@@ -51,10 +52,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition ${
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition ${
                   isActive
-                    ? "bg-green-100 dark:bg-green-900 font-semibold text-green-700 dark:text-green-400"
-                    : "hover:bg-gray-200 dark:hover:bg-zinc-800 font-medium"
+                    ? "bg-green-100 font-semibold text-green-700 shadow-sm"
+                    : "hover:bg-green-50 font-medium text-slate-700"
                 }`}
               >
                 {link.icon}
@@ -63,19 +64,21 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
             );
           })}
         </nav>
+
         <button
           onClick={handleSignOut}
-          className="m-4 px-4 py-3 bg-red-500 text-white rounded-lg flex items-center justify-center gap-2 hover:bg-red-600 transition font-semibold"
+          className="m-4 px-4 py-3 bg-slate-100 text-slate-700 rounded-xl 
+             flex items-center justify-center gap-2 
+             hover:bg-red-500 hover:text-white 
+             transition font-semibold shadow-sm"
         >
           <FiLogOut size={18} />
           Sign Out
         </button>
-      </aside>
+      </div>
 
       {/* Main content */}
-      <main className="flex-1 overflow-auto p-8 bg-gray-100 dark:bg-zinc-900">
-        {children}
-      </main>
+      <main className="flex-1 overflow-auto p-8 bg-green-50">{children}</main>
     </div>
   );
 }

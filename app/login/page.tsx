@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -29,51 +30,64 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-zinc-900 px-4">
-      <div className="w-full max-w-md p-8 bg-white dark:bg-zinc-800 text-black dark:text-white rounded-2xl shadow-xl flex flex-col space-y-4">
-        {/* Heading */}
-        <h1 className="text-3xl font-bold text-center text-green-700">
-          SewaCar Admin Login
+    <div className="flex flex-col md:flex-row min-h-screen bg-green-50">
+      {/* Left Panel - Branding & Info */}
+      <div className="md:w-1/2 flex flex-col justify-center items-start p-12 bg-green-100">
+        <h1 className="text-5xl font-extrabold text-green-700 mb-6">
+          SewaCar Admin
         </h1>
-
-        {/* Info box for test credentials */}
-        <div className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 p-3 rounded-md text-sm text-center">
-          Test Credentials: <br />
-          <strong>Email:</strong> admin@example.com <br />
-          <strong>Password:</strong> password123
+        <p className="text-slate-900 text-lg mb-8">
+          Securely manage your car rental system. Use the credentials below for
+          testing.
+        </p>
+        <div className="bg-green-200 text-green-900 p-6 rounded-xl text-base sm:text-lg font-medium shadow-md w-full max-w-sm text-start">
+          <p>
+            <strong>Email:</strong> admin@example.com
+          </p>
+          <p>
+            <strong>Password:</strong> password123
+          </p>
         </div>
+      </div>
 
-        {/* Login Form */}
-        <form onSubmit={handleLogin} className="space-y-4">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-zinc-900 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600"
-            required
-          />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-zinc-900 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600"
-            required
-          />
-          {error && <p className="text-red-500 text-sm">{error}</p>}
-          <button className="w-full py-3 bg-green-700 hover:bg-green-600 transition text-white font-semibold rounded-lg mt-2">
-            Login
+      {/* Right Panel - Login Form */}
+      <div className="md:w-1/2 flex flex-col justify-center items-center p-8">
+        <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-10 flex flex-col space-y-6 border border-green-100">
+          <h2 className="text-3xl font-semibold text-green-700 text-center">
+            Admin Login
+          </h2>
+
+          <form onSubmit={handleLogin} className="space-y-4">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              className="w-full px-4 py-3 border border-green-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              className="w-full px-4 py-3 border border-green-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            />
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+
+            <button className="w-full py-3 bg-green-600 hover:bg-green-700 transition text-white font-semibold rounded-lg shadow-md">
+              Login
+            </button>
+          </form>
+
+          <button
+            onClick={handleBack}
+            className="w-full py-3 bg-green-100 text-green-800 rounded-lg hover:bg-green-200 transition font-medium"
+          >
+            &larr; Back
           </button>
-        </form>
-
-        {/* Back Button */}
-        <button
-          onClick={handleBack}
-          className="w-full py-3 bg-gray-200 dark:bg-zinc-700 text-gray-800 dark:text-white rounded-lg hover:bg-gray-300 dark:hover:bg-zinc-600 transition font-medium"
-        >
-          &larr; Back
-        </button>
+        </div>
       </div>
     </div>
   );

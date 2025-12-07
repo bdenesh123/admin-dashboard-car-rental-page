@@ -5,7 +5,7 @@ export interface Car {
   make: string;
   model: string;
   year: number;
-  ownerId: number; // links to user
+  ownerId: number;
   location: string;
   dayPrice: number;
   transmission: string;
