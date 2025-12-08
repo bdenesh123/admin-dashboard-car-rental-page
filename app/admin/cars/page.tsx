@@ -5,13 +5,13 @@ import { cars as initialCars, users, availability, Car } from "@/lib/data";
 import CarCard from "@/components/CarCard";
 
 export default function CarsPage() {
-  // State to hold the list of cars
+  // List of cars
   const [carsState, setCarsState] = useState<Car[]>(initialCars);
-  // State for search input
+
   const [search, setSearch] = useState("");
-  // State for filtering by car class
+  // Filtering car class
   const [filterClass, setFilterClass] = useState<string | "All">("All");
-  // State for sorting cars by year or price
+  // Sorting cars by year or price
   const [sortBy, setSortBy] = useState<"year" | "price" | "none">("none");
 
   // Memoized filtered and sorted cars
