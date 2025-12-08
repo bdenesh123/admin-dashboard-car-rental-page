@@ -13,7 +13,7 @@ export default function HomeContent({
     <div className="md:w-1/2 flex flex-col justify-center items-start p-12 bg-green-100">
       <h1 className="text-5xl font-extrabold text-green-700 mb-6">SewaCar</h1>
       <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-4">
-        Welcome to the Car Rental System
+        Welcome to SewaCar Portal
       </h2>
       <p className="text-slate-700 text-lg mb-8">
         Select your portal to continue quickly and easily.
