@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 import { Car, User, Availability } from "@/lib/data";
-import CarDetailOwner from "./CarDetailOwner";
-import CarDetailAvailability from "./CarDetailAvailability";
 
 interface CarDetailCardProps {
   car: Car;
@@ -83,8 +81,31 @@ export default function CarDetailCard({
           )}
         </div>
 
-        <CarDetailOwner owner={owner} />
-        <CarDetailAvailability availability={carAvailability} />
+        <div className="mb-4">
+          <h3 className="font-semibold text-slate-800 mb-1">Owner</h3>
+          {owner ? (
+            <p className="text-slate-700">
+              {owner.name} ({owner.role})
+            </p>
+          ) : (
+            <p className="text-slate-500">Unknown</p>
+          )}
+        </div>
+
+        <div>
+          <h3 className="font-semibold text-slate-800 mb-1">Availability</h3>
+          {carAvailability.length > 0 ? (
+            <ul className="list-disc list-inside space-y-1 text-slate-700 text-sm">
+              {carAvailability.map((a) => (
+                <li key={a.id}>
+                  {a.start_at} → {a.end_at}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-slate-500 text-sm">No availability</p>
+          )}
+        </div>
       </div>
     </div>
   );

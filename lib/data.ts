@@ -275,7 +275,7 @@ export const cars: Car[] = [
   {
     id: 11,
     make: "Proton",
-    model: "EMAS7",
+    model: "eMas7",
     year: 2025,
     ownerId: 11,
     location: "Petaling Jaya",

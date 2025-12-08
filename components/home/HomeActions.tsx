@@ -13,13 +13,13 @@ export default function HomeActions({
         onClick={handleUserRedirect}
         className="flex-1 px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition shadow-md text-lg"
       >
-        Continue as User
+        User
       </button>
       <button
         onClick={handleAdminRedirect}
         className="flex-1 px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition shadow-md text-lg"
       >
-        Continue as Admin
+        Admin
       </button>
     </div>
   );
