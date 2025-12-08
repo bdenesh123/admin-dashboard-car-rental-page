@@ -16,9 +16,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-green-50">
-      {/* Split-screen hero */}
       <div className="flex flex-1 flex-col md:flex-row">
-        {/* Left panel */}
         <div className="md:w-1/2 flex flex-col justify-center items-start p-12 bg-green-100">
           <h1 className="text-5xl font-extrabold text-green-700 mb-6">
             SewaCar
@@ -57,7 +55,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Footer */}
       <footer className="w-full bg-green-100 text-green-800 px-6 py-4 text-center text-sm">
         &copy; 2025 SewaCar. All rights reserved.
       </footer>

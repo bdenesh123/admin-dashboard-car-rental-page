@@ -16,17 +16,19 @@ export default function CarCard({ car, users, availability }: CarCardProps) {
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 
+  const today = new Date().toISOString().split("T")[0];
+
   const carAvailability = availability.filter((a) => a.carId === car.id);
-  const isAvailable = carAvailability.length > 0;
+  const isAvailable = carAvailability.some(
+    (a) => a.start_at <= today && a.end_at >= today
+  );
 
   return (
     <>
-      {/* Car Card */}
       <div
         onClick={handleOpen}
         className="relative cursor-pointer border border-green-100 rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1"
       >
-        {/* Availability Badge */}
         <div
           className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold z-10 shadow-sm ${
             isAvailable
@@ -37,24 +39,25 @@ export default function CarCard({ car, users, availability }: CarCardProps) {
           {isAvailable ? "Available" : "Booked"}
         </div>
 
-        {/* Car Image */}
         <div className="relative w-full h-44 bg-white">
           <Image
             src={car.images.main}
             alt={`${car.make} ${car.model}`}
             fill
             className="object-contain"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         </div>
 
-        {/* Car Details */}
         <div className="p-4 space-y-1">
           <h2 className="font-semibold text-lg text-slate-900">
             {car.make} {car.model}
           </h2>
           <p className="text-slate-600 text-sm">Year: {car.year}</p>
           <p className="text-slate-600 text-sm">Seats: {car.seats}</p>
-
+          <p className="text-slate-600 text-sm">
+            Location: {car.location}
+          </p>{" "}
           {car.dayPrice && (
             <p className="text-green-600 font-semibold text-sm">
               RM{car.dayPrice} / day
@@ -63,7 +66,6 @@ export default function CarCard({ car, users, availability }: CarCardProps) {
         </div>
       </div>
 
-      {/* Modal */}
       {isOpen && (
         <CarDetailCard
           car={car}

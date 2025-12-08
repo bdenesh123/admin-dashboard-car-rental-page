@@ -1,13 +1,15 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { useAuth } from "@/lib/AuthContext";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
   const router = useRouter();
+  const { login } = useAuth();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,9 +18,9 @@ export default function LoginPage() {
     const FAKE_EMAIL = "admin@example.com";
     const FAKE_PASSWORD = "password123";
 
-    if (email === FAKE_EMAIL && password === FAKE_PASSWORD) {
-      sessionStorage.setItem("loggedIn", "true");
-      sessionStorage.setItem("emailid", email);
+    const success = login(email, password);
+
+    if (email === FAKE_EMAIL && password === FAKE_PASSWORD && success) {
       router.push("/admin");
     } else {
       setError("Invalid email or password");
@@ -26,12 +28,11 @@ export default function LoginPage() {
   };
 
   const handleBack = () => {
-    router.push("/"); // redirect to home page
+    router.push("/");
   };
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-green-50">
-      {/* Left Panel - Branding & Info */}
       <div className="md:w-1/2 flex flex-col justify-center items-start p-12 bg-green-100">
         <h1 className="text-5xl font-extrabold text-green-700 mb-6">
           SewaCar Admin
@@ -50,7 +51,6 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Right Panel - Login Form */}
       <div className="md:w-1/2 flex flex-col justify-center items-center p-8">
         <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-10 flex flex-col space-y-6 border border-green-100">
           <h2 className="text-3xl font-semibold text-green-700 text-center">
@@ -74,6 +74,7 @@ export default function LoginPage() {
               className="w-full px-4 py-3 border border-green-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-green-500"
               required
             />
+
             {error && <p className="text-red-500 text-sm">{error}</p>}
 
             <button className="w-full py-3 bg-green-600 hover:bg-green-700 transition text-white font-semibold rounded-lg shadow-md">
@@ -85,7 +86,7 @@ export default function LoginPage() {
             onClick={handleBack}
             className="w-full py-3 bg-green-100 text-green-800 rounded-lg hover:bg-green-200 transition font-medium"
           >
-            &larr; Back
+            &larr; Back to Homepage
           </button>
         </div>
       </div>

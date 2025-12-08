@@ -1,5 +1,3 @@
-// lib/data.ts
-
 export interface Car {
   id: number;
   make: string;
@@ -30,74 +28,107 @@ export interface Availability {
   end_at: string;
 }
 
-// Users data (9 owners)
 export const users: User[] = [
   {
     id: 1,
-    name: "John Doe",
+    name: "Lee Chong Wei",
     role: "Customer",
-    email: "john@example.com",
-    dob: "1990-05-10",
+    email: "lcw@example.com",
+    dob: "1982-10-21",
   },
   {
     id: 2,
-    name: "Jane Smith",
+    name: "Goh V Shem",
     role: "Customer",
-    email: "jane@example.com",
-    dob: "1988-12-20",
+    email: "gvs@example.com",
+    dob: "1989-05-06",
   },
   {
     id: 3,
-    name: "Ali Khan",
+    name: "Koo Kien Keat",
     role: "Customer",
-    email: "ali@example.com",
-    dob: "1992-07-15",
+    email: "kkk@example.com",
+    dob: "1985-08-08",
   },
   {
     id: 4,
-    name: "Siti Rahman",
+    name: "Tan Wee Kiong",
     role: "Customer",
-    email: "siti@example.com",
-    dob: "1995-03-30",
+    email: "twk@example.com",
+    dob: "1989-04-21",
   },
   {
     id: 5,
-    name: "Emily Tan",
+    name: "Marcus Fernaldi",
     role: "Customer",
-    email: "emily@example.com",
-    dob: "1991-11-12",
+    email: "marcus@example.com",
+    dob: "1991-05-19",
   },
   {
     id: 6,
-    name: "Michael Lim",
+    name: "Kevin Sanjaya",
     role: "Customer",
-    email: "michael@example.com",
-    dob: "1989-09-05",
+    email: "kevin@example.com",
+    dob: "1995-08-02",
   },
   {
     id: 7,
-    name: "David Wong",
+    name: "Viktor Axelsen",
     role: "Customer",
-    email: "david@example.com",
-    dob: "1993-02-21",
+    email: "viktor@example.com",
+    dob: "1994-01-04",
   },
   {
     id: 8,
-    name: "Nur Aisyah",
+    name: "Carolina Marin",
     role: "Customer",
-    email: "nur@example.com",
-    dob: "1994-08-18",
+    email: "carolina@example.com",
+    dob: "1993-06-15",
   },
   {
     id: 9,
-    name: "Farid Aziz",
+    name: "P. V. Sindhu",
     role: "Customer",
-    email: "farid@example.com",
-    dob: "1990-12-01",
+    email: "pv@example.com",
+    dob: "1995-07-05",
+  },
+  {
+    id: 10,
+    name: "Lee Zii Jia",
+    role: "Customer",
+    email: "lzz@example.com",
+    dob: "1998-03-29",
+  },
+  {
+    id: 11,
+    name: "Ratchanok Intanon",
+    role: "Customer",
+    email: "ratchanok@example.com",
+    dob: "1995-02-05",
+  },
+  {
+    id: 12,
+    name: "Chong Wei Feng",
+    role: "Employee",
+    email: "cwf@example.com",
+    dob: "1987-11-12",
+  },
+  {
+    id: 13,
+    name: "Priya Ramesh",
+    role: "Employee",
+    email: "priya@example.com",
+    dob: "1990-11-10",
+  },
+  {
+    id: 14,
+    name: "Tan Boon Heong",
+    role: "Employee",
+    email: "tbh@example.com",
+    dob: "1987-07-18",
   },
 ];
 
-// Cars data (9 cars, one per owner)
 export const cars: Car[] = [
   {
     id: 1,
@@ -183,7 +214,6 @@ export const cars: Car[] = [
     class: "hatchback",
     images: { main: "/cars/mazda-3-hatchback/main.png" },
   },
-
   {
     id: 7,
     make: "Honda",
@@ -226,12 +256,46 @@ export const cars: Car[] = [
     class: "sedan",
     images: { main: "/cars/toyota-vios/main.png" },
   },
+  {
+    id: 10,
+    make: "BYD",
+    model: "Seal",
+    year: 2025,
+    ownerId: 10,
+    location: "Kuala Lumpur",
+    dayPrice: 250,
+    transmission: "Automatic",
+    fuelType: "Electric",
+    seats: 5,
+    class: "electric",
+    images: { main: "/cars/byd-seal/main.png" },
+  },
+  {
+    id: 11,
+    make: "Proton",
+    model: "EMAS7",
+    year: 2025,
+    ownerId: 11,
+    location: "Petaling Jaya",
+    dayPrice: 220,
+    transmission: "Automatic",
+    fuelType: "Electric",
+    seats: 7,
+    class: "electric",
+    images: { main: "/cars/proton-emas7/main.png" },
+  },
 ];
 
-// Availability data
 export const availability: Availability[] = [
   { id: 1, carId: 1, start_at: "2025-12-07", end_at: "2025-12-10" },
   { id: 2, carId: 2, start_at: "2025-12-08", end_at: "2025-12-12" },
   { id: 3, carId: 3, start_at: "2025-12-09", end_at: "2025-12-11" },
   { id: 4, carId: 4, start_at: "2025-12-10", end_at: "2025-12-14" },
+  { id: 5, carId: 10, start_at: "2025-12-15", end_at: "2025-12-20" },
+  { id: 6, carId: 11, start_at: "2025-12-16", end_at: "2025-12-22" },
+  { id: 7, carId: 5, start_at: "2025-12-05", end_at: "2025-12-09" },
+  { id: 8, carId: 6, start_at: "2025-12-07", end_at: "2025-12-11" },
+  { id: 9, carId: 7, start_at: "2025-12-08", end_at: "2025-12-12" },
+  { id: 10, carId: 8, start_at: "2025-12-09", end_at: "2025-12-13" },
+  { id: 11, carId: 9, start_at: "2025-12-10", end_at: "2025-12-14" },
 ];
