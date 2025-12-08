@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { Car, User, Availability } from "@/lib/data";
+import CarDetailOwner from "./CarDetailOwner";
+import CarDetailAvailability from "./CarDetailAvailability";
 
 interface CarDetailCardProps {
   car: Car;
@@ -18,13 +20,8 @@ export default function CarDetailCard({
 }: CarDetailCardProps) {
   const today = new Date().toISOString().split("T")[0];
 
-  // To find car owner from users array
   const owner = users.find((u) => u.id === car.ownerId);
-
-  // To filter car avalability record
   const carAvailability = availability.filter((a) => a.carId === car.id);
-
-  // To check and see if the car is available today
   const isAvailable = carAvailability.some(
     (a) => a.start_at <= today && a.end_at >= today
   );
@@ -86,32 +83,8 @@ export default function CarDetailCard({
           )}
         </div>
 
-        <div className="mb-4">
-          <h3 className="font-semibold text-slate-800 mb-1">Owner</h3>
-          {owner ? (
-            <p className="text-slate-700">
-              {owner.name} ({owner.role})
-            </p>
-          ) : (
-            <p className="text-slate-500">Unknown</p>
-          )}
-        </div>
-
-        <div>
-          <h3 className="font-semibold text-slate-800 mb-1">Availability</h3>
-
-          {carAvailability.length > 0 ? (
-            <ul className="list-disc list-inside space-y-1 text-slate-700 text-sm">
-              {carAvailability.map((a) => (
-                <li key={a.id}>
-                  {a.start_at} → {a.end_at}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-slate-500 text-sm">No availability</p>
-          )}
-        </div>
+        <CarDetailOwner owner={owner} />
+        <CarDetailAvailability availability={carAvailability} />
       </div>
     </div>
   );
