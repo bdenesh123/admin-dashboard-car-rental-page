@@ -55,7 +55,7 @@ export default function AdminLoginForm({
           onClick={handleBack}
           className="w-full py-3 bg-green-100 text-green-800 rounded-lg hover:bg-green-200 transition font-medium"
         >
-          &larr; Back to Homepage
+          &larr; Back to portal page
         </button>
       </div>
     </div>

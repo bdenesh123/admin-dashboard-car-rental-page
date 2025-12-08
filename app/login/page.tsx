@@ -34,7 +34,7 @@ export default function LoginPage() {
     }
   };
 
-  // Back to hompage redirect
+  // Back to portal page redirect
   const handleBack = () => {
     router.push("/");
   };
