@@ -12,19 +12,18 @@ interface CarCardProps {
 }
 
 export default function CarCard({ car, users, availability }: CarCardProps) {
-  // State to control whether the detailed car modal is open
   const [isOpen, setIsOpen] = useState(false);
 
-  // Handlers to open and close the detail modal
+  // To open and close the detail modal
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 
   const today = new Date().toISOString().split("T")[0];
 
-  // Filter availability records for specific car
+  // To filter the records for avaiability
   const carAvailability = availability.filter((a) => a.carId === car.id);
 
-  // Check if the car is available today
+  // To check and see if the car is availablwe today
   const isAvailable = carAvailability.some(
     (a) => a.start_at <= today && a.end_at >= today
   );
