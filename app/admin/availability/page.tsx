@@ -11,6 +11,7 @@ export default function AvailabilityPage() {
         Car Availability
       </h2>
 
+      {/* Table */}
       <table className="w-full table-auto border border-green-100 rounded-lg overflow-hidden">
         <thead className="bg-green-100 text-green-900">
           <tr>

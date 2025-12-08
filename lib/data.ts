@@ -28,6 +28,7 @@ export interface Availability {
   end_at: string;
 }
 
+// SewaCar Users
 export const users: User[] = [
   {
     id: 1,
@@ -129,6 +130,7 @@ export const users: User[] = [
   },
 ];
 
+// SewaCar Carlists
 export const cars: Car[] = [
   {
     id: 1,
@@ -286,6 +288,7 @@ export const cars: Car[] = [
   },
 ];
 
+// Car Availability
 export const availability: Availability[] = [
   { id: 1, carId: 1, start_at: "2025-12-07", end_at: "2025-12-10" },
   { id: 2, carId: 2, start_at: "2025-12-08", end_at: "2025-12-12" },

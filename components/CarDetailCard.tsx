@@ -17,8 +17,14 @@ export default function CarDetailCard({
   onClose,
 }: CarDetailCardProps) {
   const today = new Date().toISOString().split("T")[0];
+
+  // Find the owner of this car from the users array
   const owner = users.find((u) => u.id === car.ownerId);
+
+  // Filter availability records for car
   const carAvailability = availability.filter((a) => a.carId === car.id);
+
+  // Check if the car is available today
   const isAvailable = carAvailability.some(
     (a) => a.start_at <= today && a.end_at >= today
   );

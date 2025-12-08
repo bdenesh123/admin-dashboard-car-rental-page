@@ -9,8 +9,11 @@ export default function LoginPage() {
   const [error, setError] = useState("");
 
   const router = useRouter();
+
+  // Access login function from AuthContext
   const { login } = useAuth();
 
+  // Login form submission
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -20,13 +23,14 @@ export default function LoginPage() {
 
     const success = login(email, password);
 
+    // To check credentials and navigate if correct
     if (email === FAKE_EMAIL && password === FAKE_PASSWORD && success) {
       router.push("/admin");
     } else {
       setError("Invalid email or password");
     }
   };
-
+  // Back to hompage redirect
   const handleBack = () => {
     router.push("/");
   };

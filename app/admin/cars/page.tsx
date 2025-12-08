@@ -5,14 +5,20 @@ import { cars as initialCars, users, availability, Car } from "@/lib/data";
 import CarCard from "@/components/CarCard";
 
 export default function CarsPage() {
+  // State to hold the list of cars
   const [carsState, setCarsState] = useState<Car[]>(initialCars);
+  // State for search input
   const [search, setSearch] = useState("");
+  // State for filtering by car class
   const [filterClass, setFilterClass] = useState<string | "All">("All");
+  // State for sorting cars by year or price
   const [sortBy, setSortBy] = useState<"year" | "price" | "none">("none");
 
+  // Memoized filtered and sorted cars
   const displayedCars = useMemo(() => {
     let filtered = [...carsState];
 
+    // Filter by search input (make, model, location)
     if (search) {
       filtered = filtered.filter(
         (c) =>
@@ -22,6 +28,7 @@ export default function CarsPage() {
       );
     }
 
+    // Filter by car class
     if (filterClass !== "All") {
       if (filterClass === "electric") {
         filtered = filtered.filter(
@@ -33,7 +40,7 @@ export default function CarsPage() {
         );
       }
     }
-
+    // Sort cars by selected criteria
     if (sortBy === "year") filtered = filtered.sort((a, b) => b.year - a.year);
     if (sortBy === "price")
       filtered = filtered.sort((a, b) => a.dayPrice - b.dayPrice);
@@ -76,7 +83,7 @@ export default function CarsPage() {
           <option value="price">Sort by Price</option>
         </select>
       </div>
-
+      {/* Cars grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {displayedCars.map((car) => (
           <div key={car.id} className="relative">

@@ -19,23 +19,39 @@ import {
   CartesianGrid,
   Tooltip as BarTooltip,
 } from "recharts";
+import { Car, CheckSquare, Users } from "lucide-react";
 
 export default function AdminHome() {
   const today = new Date().toISOString().split("T")[0];
+
+  // Count available cars by checking if they are not booked today
   const availableCarsCount = availability.filter(
     (a) => !(a.start_at <= today && a.end_at >= today)
   ).length;
 
+  // Stats for the top summary cards
   const stats = [
-    { title: "Users", total: users.length, color: "bg-blue-500" },
-    { title: "Cars", total: cars.length, color: "bg-green-500" },
+    {
+      title: "Users",
+      total: users.length,
+      color: "bg-blue-500",
+      icon: <Users size={24} />,
+    },
+    {
+      title: "Cars",
+      total: cars.length,
+      color: "bg-green-500",
+      icon: <Car size={24} />,
+    },
     {
       title: "Availability",
       total: availableCarsCount,
       color: "bg-yellow-500",
+      icon: <CheckSquare size={24} />,
     },
   ];
 
+  // Pie chart data
   const userStats = [
     {
       name: "Customers",
@@ -48,6 +64,7 @@ export default function AdminHome() {
   ];
   const pieColors = ["#0088FE", "#00C49F"];
 
+  // Bar chart data
   const carClassStats = [
     { class: "Sedan", value: cars.filter((c) => c.class === "sedan").length },
     { class: "SUV", value: cars.filter((c) => c.class === "suv").length },
@@ -72,7 +89,7 @@ export default function AdminHome() {
             Manage users, cars, and availability easily from the sidebar.
           </p>
         </header>
-
+        {/* Top summary cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {stats.map((stat) => (
             <div
@@ -82,7 +99,7 @@ export default function AdminHome() {
               <div
                 className={`w-12 h-12 mb-4 rounded-full ${stat.color} flex items-center justify-center text-white text-xl font-bold shadow-md`}
               >
-                {stat.total}
+                {stat.icon}
               </div>
 
               <h3 className="text-xl font-semibold mb-1 text-slate-900">
@@ -93,7 +110,7 @@ export default function AdminHome() {
             </div>
           ))}
         </div>
-
+        {/* Charts section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-2xl shadow-lg border border-green-100 flex flex-col items-center">
             <h3 className="font-semibold text-lg mb-4 text-slate-900">

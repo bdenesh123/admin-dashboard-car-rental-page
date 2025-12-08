@@ -4,13 +4,24 @@ import { useState } from "react";
 import { users as initialUsers, cars, User, Car } from "@/lib/data";
 
 export default function UsersPage() {
+  // To hold the list of users
   const [userList, setUserList] = useState<User[]>(initialUsers);
+
+  // To keep track of the selected user for detail view
   const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
+
+  // For search input
   const [search, setSearch] = useState("");
+
+  // For sorting users
   const [sortBy, setSortBy] = useState("nameAsc");
+
   const [isEditing, setIsEditing] = useState(false);
+
+  // To temporarily store edited user data
   const [editedUser, setEditedUser] = useState<Partial<User>>({});
 
+  // Filter users based on search input (name, email, or role)
   const filteredUsers = userList.filter(
     (u) =>
       u.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -18,6 +29,7 @@ export default function UsersPage() {
       u.role.toLowerCase().includes(search.toLowerCase())
   );
 
+  // Sort filtered users
   const sortedUsers = [...filteredUsers].sort((a, b) => {
     if (sortBy === "nameAsc") return a.name.localeCompare(b.name);
     if (sortBy === "nameDesc") return b.name.localeCompare(a.name);
@@ -25,22 +37,29 @@ export default function UsersPage() {
     return 0;
   });
 
+  // To select user from the grid
   const handleSelectUser = (id: number) => {
     setSelectedUserId(id);
     setIsEditing(false);
   };
+
+  // To close detail view
   const handleClose = () => {
     setSelectedUserId(null);
     setIsEditing(false);
   };
 
+  // To find currently selected user
   const selectedUser: User | undefined = userList.find(
     (u) => u.id === selectedUserId
   );
+
+  // To get cars owned by selected user
   const userCars: Car[] = selectedUser
     ? cars.filter((car) => car.ownerId === selectedUserId)
     : [];
 
+  // For saving edited user data
   const handleSave = () => {
     if (!selectedUser) return;
     setUserList((prev) =>
@@ -49,6 +68,7 @@ export default function UsersPage() {
     setIsEditing(false);
   };
 
+  // For deleting a user
   const handleDelete = () => {
     if (!selectedUser) return;
     if (!confirm(`Are you sure you want to delete ${selectedUser.name}?`))

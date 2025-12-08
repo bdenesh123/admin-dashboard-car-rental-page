@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { Home, Users, Car, CheckSquare, LogOut } from "lucide-react";
 import {
   FiUsers,
   FiTruck,
@@ -14,6 +15,7 @@ import {
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { useAuth } from "@/lib/AuthContext";
 import { useState } from "react";
+import { FaCar } from "react-icons/fa";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -31,13 +33,13 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   };
 
   const navLinks = [
-    { title: "Dashboard", href: "/admin", icon: <FiHome size={20} /> },
-    { title: "Users", href: "/admin/users", icon: <FiUsers size={20} /> },
-    { title: "Cars", href: "/admin/cars", icon: <FiTruck size={20} /> },
+    { title: "Dashboard", href: "/admin", icon: <Home size={20} /> },
+    { title: "Users", href: "/admin/users", icon: <Users size={20} /> },
+    { title: "Cars", href: "/admin/cars", icon: <Car size={20} /> },
     {
       title: "Availability",
       href: "/admin/availability",
-      icon: <FiCheckSquare size={20} />,
+      icon: <CheckSquare size={20} />,
     },
   ];
 
@@ -94,11 +96,11 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           <button
             onClick={handleSignOut}
             className="m-4 px-4 py-3 bg-slate-100 text-slate-700 rounded-xl 
-              flex items-center justify-center gap-2 
-              hover:bg-red-500 hover:text-white 
-              transition font-semibold shadow-sm"
+    flex items-center justify-center gap-2 
+    hover:bg-red-500 hover:text-white 
+    transition font-semibold shadow-sm"
           >
-            <FiLogOut size={18} />
+            <LogOut size={18} />
             Sign Out
           </button>
         </div>
