@@ -9,7 +9,7 @@ export default function Home() {
   const router = useRouter();
 
   const handleUserRedirect = () => {
-    window.open("https://car-rental-webpage-three.vercel.app/", "_blank");
+    window.open("https://sewacar-rental-webpage.vercel.app/", "_blank");
   };
 
   const handleAdminRedirect = () => {
